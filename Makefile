@@ -3,7 +3,7 @@ CFLAGS = -g -Wall
 
 hello.out: hello.o
 	$(CC) -o $@ $<
-hello.o: hello.cpp
-	$(CC) $(CFLAGS) -c $<
+%.o: %.cpp
+	$(CC) -MMD -MF $@.d $(CFLAGS) -c $< -o $@
 clean:
-	rm -f *.o *.out
+	rm -f *.o*
